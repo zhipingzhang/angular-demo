@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <title>ng-scope</title>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <h1>{{usename}}</h1>
+</div>
+<br><br>
+
+<div id="div2" ng-app="myApp2" ng-controller="myCtrl2">
+    <input ng-model="name">
+    <h1>{{greeting}}</h1>
+    <button ng-click='sayHello()'>点我</button>
+</div>
+
+</body>
+<script>
+    var myApp = angular.module("myApp", []);
+    var app = angular.module('myApp2', []);
+    myApp.controller('myCtrl', function ($scope) {
+        $scope.usename = 'zzzzz';
+    });
+
+
+    app.controller('myCtrl2', function($scope) {
+        $scope.name = "Runoob";
+        $scope.sayHello = function() {
+            $scope.greeting = 'Hello ' + $scope.name + '!';
+        };
+    });
+    angular.bootstrap(document.getElementById("div2"), ['myApp2']);
+
+</script>
+
+</html>
